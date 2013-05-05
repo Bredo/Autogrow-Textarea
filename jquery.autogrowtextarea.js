@@ -22,26 +22,26 @@
 $.fn.autoGrow = function() {
 	return this.each(function() {
 		var createMirror = function(textarea) {
-			$(textarea).after('<div class="ag-mirror"></div>');
-			return $(textarea).next('.ag-mirror')[0];
+			$(this).after('<div class="ag-mirror"></div>');
+			return $(this).next('.ag-mirror')[0];
 		}
 		var sendContentToMirror = function (textarea) {
 			mirror.innerHTML = String(textarea.value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br />') + '.<br/>.';
-			if ($(textarea).height() != $(mirror).height()){
-				$(textarea).height($(mirror).height());
+			if ($(this).height() != $(mirror).height()){
+				$(this).height($(mirror).height());
 			}
 		}
 		var updateStyles = function () {
 			$(mirror).css("display", "none");
-			$(mirror).css("wordwrap", $(textarea).css("wordwrap"));
-			$(mirror).css("padding", $(textarea).css("padding"));
-			$(mirror).css("width", $(textarea).css("width"));
-			$(mirror).css("font-family", $(textarea).css("font-family"));
-			$(mirror).css("font-size", $(textarea).css("font-size"));
-			$(mirror).css("line-height", $(textarea).css("line-height"));
-			$(mirror).css("-webkit-columns", $(textarea).css("-webkit-columns"));
-			$(mirror).css("-moz-columns", $(textarea).css("-moz-columns"));
-			$(mirror).css("columns", $(textarea).css("columns"));
+			$(mirror).css("wordwrap", $(this).css("wordwrap"));
+			$(mirror).css("padding", $(this).css("padding"));
+			$(mirror).css("width", $(this).css("width"));
+			$(mirror).css("font-family", $(this).css("font-family"));
+			$(mirror).css("font-size", $(this).css("font-size"));
+			$(mirror).css("line-height", $(this).css("line-height"));
+			$(mirror).css("-webkit-columns", $(this).css("-webkit-columns"));
+			$(mirror).css("-moz-columns", $(this).css("-moz-columns"));
+			$(mirror).css("columns", $(this).css("columns"));
 		}
 		var growTextarea = function () {
 			sendContentToMirror(this);
